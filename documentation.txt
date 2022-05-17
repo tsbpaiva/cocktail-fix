@@ -1,0 +1,9 @@
+Structure:
+main - where the code happens
+menu - the so-called database for my app
+view - 
+
+First started by importing other files to main. My app will run basically inside a while loop with break condition being user inputting "no". then the app ends and displays the goodbye message.
+
+
+
