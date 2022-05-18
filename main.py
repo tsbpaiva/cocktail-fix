@@ -1,5 +1,3 @@
-# sys.path.append(".")
-
 from view import View
 from menu import Menu
 view = View()
@@ -23,44 +21,28 @@ print(view)
 print("Welcome to Cocktail Fix!")
 
 user_input = input("What liquor or ingredient do you have in your bar today?").lower()
+results = []
 
-while user_input != "no": 
-    for i in range(len(Menu.RECIPES)):
-        if Menu.RECIPES[i]["name"] == user_input or user_input in  Menu.RECIPES[i]["ingredients"]:
-            print(Menu.RECIPES[i]["name"])
-    user_input = input("You got any more liquor in your bar? Want to check another recipe?").lower()
-    if user_input == "no":
-        break
+for i in range(len(Menu.RECIPES)):
+    if Menu.RECIPES[i]["name"] == user_input or user_input in  Menu.RECIPES[i]["ingredients"]:
+        # print(i, Menu.RECIPES[i]["name"])
+        results.append(Menu.RECIPES[i]["name"])
+
+print("These are the cocktails we've found for you.")        
+print(results)
+
+user_input = input("Which recipe would you like to learn today? Choose a recipe.").lower()
+print(user_input)
+for i in range(len(Menu.RECIPES)):
+    if Menu.RECIPES[i]["name"] == user_input:
+        for ingredient in Menu.RECIPES[i]["ingredients"]:
+            print("- ", ingredient)
+        # print(Menu.RECIPES[i]["ingredients"])
+    
 
 print("Thank you for drinking with Cocktail Fix today. Cheers!")
   
 
 
-#first, what I want is for my program to search the list Menu.RECIPES and return True if it finds the name of the recipe inputed (inputted? inputtted?) - UserInput. by this I just want to test a basic search function that I'll prob have to create
-
-# user_recipe = input("Enter a recipe. We'll see if we know it!")
-
-# #FOR each value related to "name" inside Recipes,
-# #  COMPARE value to UserInput - use find?
-# #   IF UserInput == Value
-# #       PRINT "recipe found"
-# #   ELSE
-# #       PRINT "recipe not found"
-# # 
-# # found this online, might be helpful
-# def search(recipes, user_recipe):
-#     for i in range(len(recipes)):
-#         if list[i] == user_recipe:
-#             return True
-#     return False
-
-
-# #this is not working lol
-# user_liquor = input("What liquor or ingredient do you have today?")
-
-# if "whiskey" in recipes:
-#     print("recipe found!")
-# else:
-#     print("No recipe found. Try something else")
 
 
