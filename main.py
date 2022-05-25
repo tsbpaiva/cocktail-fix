@@ -1,46 +1,53 @@
-from view import View
+from re import U
 from menu import Menu
-view = View()
-print(view)
+
 
 #Greet the user: "Welcome to Cocktail Fix!"
 #Ask user: "What liquor or ingredient do you have in your bar today?"
 #get user input
-#compare to recipes. if not found, print "Sorry, you're out of luck." Skip to line 21.
+#compare to recipes. if not found, print "Sorry, you're out of luck." Skip to line 13.
 #   If found, app will return the name(s) of recipe(s) containing that ingredient: "Jackpot! You could make those drinks: (...)"
 #Ask user: "Which recipe would you like to learn today?"
-#get user input (number)
+#get user input (number) 
 #display detailed recipe 
-#Ask user: "would you like to see the results again? Y/N". If Yes, repeat. If no, go to end.
 #Ask user: "You got any more liquor in your bar? Want to check another recipe?"
 #get user input
 #if Y, back to top
 #if N, go to end
 #End: "Thank you for drinking with Cocktail Fix today. Cheers!"
 
-print("Welcome to Cocktail Fix!")
+##next steps: 
 
-user_input = input("What liquor or ingredient do you have in your bar today?").lower()
-results = []
+print("Welcome to Cocktail Fix! 🍸🍸🍸")
+user_input = ""
 
-for i in range(len(Menu.RECIPES)):
-    if Menu.RECIPES[i]["name"] == user_input or user_input in  Menu.RECIPES[i]["ingredients"]:
-        # print(i, Menu.RECIPES[i]["name"])
-        results.append(Menu.RECIPES[i]["name"])
+while user_input != "no":
 
-print("These are the cocktails we've found for you.")        
-print(results)
+    user_input = input("What liquor or ingredient do you have in your bar today? 🧐 ").lower()
+    results = []
 
-user_input = input("Which recipe would you like to learn today? Choose a recipe.").lower()
-print(user_input)
-for i in range(len(Menu.RECIPES)):
-    if Menu.RECIPES[i]["name"] == user_input:
-        for ingredient in Menu.RECIPES[i]["ingredients"]:
-            print("- ", ingredient)
-        # print(Menu.RECIPES[i]["ingredients"])
+    for i in range(len(Menu.RECIPES)):
+        if Menu.RECIPES[i]["name"] == user_input or user_input in  Menu.RECIPES[i]["ingredients"]:
+            results.append(Menu.RECIPES[i]) 
+
+    if bool(results):
+        print("You're in luck 🍀 ! With", user_input, "you can make these cocktails:")        
+        for i in range(len(results)):
+            print(i + 1, "-", results[i]["name"])
+        
+        user_index = input("Which cocktail would you like to learn today? Choose a number.").lower()
+        user_index = int(user_index) - 1
     
+        print("Just make yourself a nice", results[user_index]["name"], "and relax 🍹 ! Here's the recipe 📝 :")
+        for ingredient in results[user_index]["ingredients"]:
+            print("- ", ingredient)
+        user_input = input("You got any more liquor in your bar 👀 ? Want to check another recipe? Just type yes or no.")
 
-print("Thank you for drinking with Cocktail Fix today. Cheers!")
+    else:
+        print("You're out of luck today, pal. We don't have any cocktails that use", user_input+" 😞 ... But don't fret! Let's try that again! 🙌🙌🙌")
+        user_input = input("You got any more liquor in your bar 👀 ? Want to check another recipe? Just type yes or no.")
+    
+print("Thank you for drinking with Cocktail Fix today. Cheers! 🥂🥂🥂")
   
 
 
