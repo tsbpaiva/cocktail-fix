@@ -1,4 +1,4 @@
-from  cocktailFixImproved import Main
+from  methods import Main
 
 # welcome user
 print("Welcome to Cocktail Fix! 🍸🍸🍸")

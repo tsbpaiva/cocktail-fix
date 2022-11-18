@@ -15,7 +15,6 @@ class Main:
             print(i + 1, "-", search_results[i]["name"].title())
         # return search_results
 
-    # HERE IS THE PROBLEM! 
     def display_recipe(self, result_recipe):
         print('inside display recipe')
         print("Just make yourself a nice", result_recipe['name'], "and relax 🍹 ! Here's the recipe 📝 :")
